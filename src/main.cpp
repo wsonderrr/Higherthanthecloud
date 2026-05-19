@@ -6,7 +6,7 @@
 #include "ftxui/component/component.hpp"
 #include "ftxui/component/screen_interactive.hpp"
 #include "ftxui/dom/elements.hpp"
-#include "ftxui/screen/canvas.hpp"
+#include "ftxui/dom/canvas.hpp"
 
 using namespace ftxui;
 
@@ -33,8 +33,8 @@ int main() {
 			hbox({
 				text(" 🐤 Flying Bird C++ PRO ") | bold | color(Color::Yellow),
 				filler(),
-				text("🏆 Max: " + std::to_string(game.high_score)) | color(Color::Gray),
-				separatorText(""),
+				text("🏆 Max: " + std::to_string(game.high_score)) | color(Color::GrayDark),
+				separator(),
 				text("✨ Score: " + std::to_string(game.score)) | bold | color(Color::Green)
 			}),
 			separatorDouble(),
@@ -43,7 +43,7 @@ int main() {
 			game.is_game_over ? 
 			vbox({
 				text(" 💀 GAME OVER ") | blink | center | color(Color::Red) | bold,
-				text(" Press [R] to Try Again / [Q] to Quit ") | center | color(Color::Gray)
+				text(" Press [R] to Try Again / [Q] to Quit ") | center | color(Color::GrayDark)
 			}) :
 			text(" ⌨️  Controls: [Space] to Fly Up | [Q] to Quit ") | center | color(Color::DarkGreen)
 		});
@@ -58,7 +58,7 @@ int main() {
 			game.initGame();
 			return true;
 		}
-		if (event == Event::(' ')) { 
+		if (event == Event::Character(' ')) { 
 			game.checkInput();
 			return true;
 		}
